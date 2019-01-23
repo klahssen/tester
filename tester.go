@@ -19,15 +19,15 @@ func NewT(t *testing.T) *T {
 }
 
 //CheckError compares errors
-func (t *T) CheckError(testID string, exp, err error) {
+func (t *T) CheckError(testID int, exp, err error) {
 	if (err != nil && exp == nil) || (err == nil && exp != nil) || (err != nil && !reflect.DeepEqual(exp, err)) {
-		t.t.Errorf("test '%s': expected %+v received %+v", testID, exp, err)
+		t.t.Errorf("test [%d]: expected %+v received %+v", testID, exp, err)
 	}
 }
 
 //CheckVal compares 2 values
-func (t *T) CheckVal(testID, valName string, exp, val float64) {
+func (t *T) CheckVal(testID int, valName string, exp, val float64) {
 	if !reflect.DeepEqual(exp, val) {
-		t.t.Errorf("test '%s': expected %s %+v received %+v", testID, valName, exp, val)
+		t.t.Errorf("test [%d]: expected %s %+v received %+v", testID, valName, exp, val)
 	}
 }
