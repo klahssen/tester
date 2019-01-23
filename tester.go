@@ -25,8 +25,8 @@ func (t *T) CheckError(testID int, exp, err error) {
 	}
 }
 
-//CheckVal compares 2 values
-func (t *T) CheckVal(testID int, valName string, exp, val float64) {
+//DeepEqual compares 2 values
+func (t *T) DeepEqual(testID int, valName string, exp, val interface{}) {
 	if !reflect.DeepEqual(exp, val) {
 		t.t.Errorf("test [%d]: expected %s %+v received %+v", testID, valName, exp, val)
 	}
