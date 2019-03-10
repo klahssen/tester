@@ -20,7 +20,7 @@ func NewT(t *testing.T) *T {
 
 //CheckError compares errors
 func (t *T) CheckError(testID int, exp, err error) {
-	if (err != nil && exp == nil) || (err == nil && exp != nil) || (err != nil && !reflect.DeepEqual(exp, err)) {
+	if (err != nil && exp == nil) || (err == nil && exp != nil) || (err != nil && exp.Error() != err.Error()) {
 		t.t.Errorf("test [%d]: expected %+v received %+v", testID, exp, err)
 	}
 }
